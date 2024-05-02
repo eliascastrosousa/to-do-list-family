@@ -15,7 +15,7 @@ import java.time.ZoneOffset;
 import java.util.Date;
 @Service
 public class TokenService {
-    @Value("${todolistfamily.security.token.secret}")
+    @Value("${api.security.token.secret}")
     private String secret;
     public String gerarToken(Usuario usuario){
         System.out.println(secret);
@@ -23,7 +23,7 @@ public class TokenService {
 
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("API Voll.med ")
+                    .withIssuer("API to do list family ")
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
@@ -37,7 +37,7 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.require(algoritmo)
-                    .withIssuer("API Voll.med ")
+                    .withIssuer("API to do list family ")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();

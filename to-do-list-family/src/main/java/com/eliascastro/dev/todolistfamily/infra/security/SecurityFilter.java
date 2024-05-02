@@ -22,7 +22,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     @Autowired
     private TokenService tokenService ;
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         var tokenJWT = recuperarToken(request); //recupera o token
 

@@ -1,6 +1,7 @@
 package com.eliascastro.dev.todolistfamily.controller;
 
 import com.eliascastro.dev.todolistfamily.model.tarefa.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tarefas")
+@SecurityRequirement(name = "bearer-key")
 public class TarefaController {
 
     @Autowired
