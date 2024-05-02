@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tarefas")
-@SecurityRequirement(name = "bearer-key")
 public class TarefaController {
 
     @Autowired
