@@ -39,11 +39,14 @@ public class Tarefa {
 
     private Boolean ativo = true;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id")
-    private Long usuarioId;
 
-    public Tarefa(String titulo, String descricao, LocalDateTime localDateTime, Status status, Usuario usuario) {
+    public Tarefa(DadosCadastroTarefa dados) {
+        this.titulo = dados.titulo();
+        this.descricao = dados.descricao();
+        this.dataCriacao = LocalDateTime.now();
+        this.dataConclusao = dados.dataConclusao();
+        this.status = dados.status();
+
     }
 
     public void atualizarInformacoes(DadosAtualizaTarefa dados) {

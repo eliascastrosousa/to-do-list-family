@@ -20,9 +20,6 @@ import java.time.LocalDateTime;
                                       @JsonAlias({"data_conclusao", "dataConclusao"})
                                       LocalDateTime dataConclusao,
 
-                                      Status status,
-
-                                      Long usuarioId
-
+                                      Status status
                                   ) {
 }

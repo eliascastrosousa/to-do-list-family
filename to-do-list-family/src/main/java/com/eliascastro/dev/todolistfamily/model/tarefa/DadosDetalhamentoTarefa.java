@@ -13,16 +13,15 @@ public record DadosDetalhamentoTarefa(Long id,
 
                                       LocalDateTime dataConclusao,
 
-                                      Status status,
-                                      Long usuario) {
+                                      Status status) {
     public DadosDetalhamentoTarefa(Tarefa tarefa) {
         this(tarefa.getId(),
                 tarefa.getTitulo(),
                 tarefa.getDescricao(),
                 tarefa.getDataCriacao(),
                 tarefa.getDataConclusao(),
-                tarefa.getStatus(),
-                tarefa.getUsuarioId()
+                tarefa.getStatus()
+
                 );
     }
 }
