@@ -1,5 +1,6 @@
 package com.eliascastro.dev.todolistfamily.model.tarefa;
 
+import com.eliascastro.dev.todolistfamily.model.usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.Future;
@@ -19,6 +20,9 @@ import java.time.LocalDateTime;
                                       @JsonAlias({"data_conclusao", "dataConclusao"})
                                       LocalDateTime dataConclusao,
 
-                                      Status status
+                                      Status status,
+
+                                      Long usuarioId
+
                                   ) {
 }

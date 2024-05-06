@@ -1,8 +1,11 @@
 package com.eliascastro.dev.todolistfamily.model.tarefa;
 
+import com.eliascastro.dev.todolistfamily.model.usuario.Usuario;
+
 import java.time.LocalDateTime;
 
-public record DadosDetalhamentoTarefa(String titulo,
+public record DadosDetalhamentoTarefa(Long id,
+                                      String titulo,
 
                                       String descricao,
 
@@ -10,13 +13,16 @@ public record DadosDetalhamentoTarefa(String titulo,
 
                                       LocalDateTime dataConclusao,
 
-                                      Status status) {
+                                      Status status,
+                                      Long usuario) {
     public DadosDetalhamentoTarefa(Tarefa tarefa) {
-        this(tarefa.getTitulo(),
+        this(tarefa.getId(),
+                tarefa.getTitulo(),
                 tarefa.getDescricao(),
                 tarefa.getDataCriacao(),
                 tarefa.getDataConclusao(),
-                tarefa.getStatus()
+                tarefa.getStatus(),
+                tarefa.getUsuarioId()
                 );
     }
 }

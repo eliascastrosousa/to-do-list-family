@@ -22,13 +22,16 @@ public class TarefaController {
     @Autowired
     private TarefaRepository repository;
 
+    @Autowired
+    private CadastroTarefa cadastro;
+
     @PostMapping
     @Transactional
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroTarefa dados, UriComponentsBuilder uriBuilder){
-        var tarefa = new Tarefa(dados);
-        repository.save(tarefa);
-        var uri = uriBuilder.path("/tarefas/{id}").buildAndExpand(tarefa.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DadosDetalhamentoTarefa(tarefa));
+
+        var tarefa = cadastro.cadastrar(dados);
+        //var uri = uriBuilder.path("/tarefas/{id}").buildAndExpand(tarefa.id()).toUri();
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping

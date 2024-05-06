@@ -1,5 +1,8 @@
 package com.eliascastro.dev.todolistfamily.model.tarefa;
 
+import com.eliascastro.dev.todolistfamily.model.usuario.DadosCadastroUsuario;
+import com.eliascastro.dev.todolistfamily.model.usuario.Usuario;
+import com.eliascastro.dev.todolistfamily.model.usuario.UsuarioRepository;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -7,6 +10,7 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 @Table(name = "tarefas")
@@ -35,14 +39,11 @@ public class Tarefa {
 
     private Boolean ativo = true;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id")
+    private Long usuarioId;
 
-
-    public Tarefa(DadosCadastroTarefa dados) {
-        this.titulo = dados.titulo();
-        this.descricao = dados.descricao();
-        this.dataCriacao = LocalDateTime.now();
-        this.dataConclusao = dados.dataConclusao();
-        this.status = dados.status();
+    public Tarefa(String titulo, String descricao, LocalDateTime localDateTime, Status status, Usuario usuario) {
     }
 
     public void atualizarInformacoes(DadosAtualizaTarefa dados) {
